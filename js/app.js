@@ -7,7 +7,26 @@ const loadPlayers = () => {
     // console.log(searchBox)
 }
 const displayDetiles = (players) => {
+    const parant = document.getElementById('player-container')
     for (const player of players) {
-        console.log(player)
+        const div = document.createElement('div');
+        div.innerHTML = `
+        <div class="card" style="width: 18rem;">
+        <img src="${player.strThumb}" class="card-img-top" alt="loading..">
+            <div class="card-body">
+                <h2>Name: ${player.strPlayer}</h2>
+                <h5>Country: ${player.strNationality}</h5>
+                <p></p>
+                <div class="allbutton">
+                    <button class="btn bg-primary">Delete</button>
+                    <button onclick="details()" class="btn bg-secondary">Detailes</button>
+                </div>
+            </div>
+        </div>
+        `;
+        parant.appendChild(div)
     }
+}
+const details = () => {
+    console.log('first')
 }
