@@ -19,14 +19,21 @@ const displayDetiles = (players) => {
                 <p></p>
                 <div class="allbutton">
                     <button class="btn bg-primary">Delete</button>
-                    <button onclick="details()" class="btn bg-secondary">Detailes</button>
+                    <button onclick="details('${player.idPlayer}')" class="btn bg-secondary">Detailes</button>
                 </div>
             </div>
         </div>
         `;
         parant.appendChild(div)
+        // console.log(player)
     }
 }
-const details = () => {
-    console.log('first')
+const details = (info) => {
+    const url = `https://www.thesportsdb.com/api/v1/json/2/lookupplayer.php?id=${info}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => detailsDisplay(data.players[0]))
+}
+const detailsDisplay = (id) => {
+    console.log(id)
 }
